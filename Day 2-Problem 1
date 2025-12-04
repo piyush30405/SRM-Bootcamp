@@ -1,0 +1,29 @@
+PALINDROME:
+
+class Main {
+    
+    public boolean palindromeCheck(String s){
+        int left =0;
+        int right = s.length()-1;
+        while(left<right){
+            if (s.charAt(left)!=s.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Main main = new Main();
+        String s1 = "Nitin";
+        if(main.palindromeCheck(s1)){
+            System.out.println(s1+" is a Palindrome.");
+        }
+        else{
+            System.out.println(s1+" is not a palindrome.");
+        }
+    }
+}
+
