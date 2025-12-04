@@ -1,0 +1,22 @@
+MAXIMUM SUBSTRING WITH DISTINCT START:
+
+class Solution {
+    public int maxDistinct(String s) {
+        int n = s.length();
+         if (n==0){
+            return 0;
+         }
+         
+         int count=0;
+         Set<Character> seen = new HashSet<>();
+
+         for(int i =0; i<n; i++){
+            if (!seen.contains(s.charAt(i))) {
+                count++;
+                seen.add(s.charAt(i));
+            }
+         }
+         return count;
+
+    }
+}
