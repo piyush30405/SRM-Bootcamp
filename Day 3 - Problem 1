@@ -1,5 +1,6 @@
 MAXIMUM NO OF CUTS FOR A ROPE USINF RECURSION:
 
+import java.util.Scanner;
 class Main {
     
     public static int maxCuts(int n, int a, int b, int c){
@@ -18,8 +19,15 @@ class Main {
     
     
     public static void main(String[] args) {
-        int n=17;
-        int a=5,b=3,c=2;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the rope length: ");
+        int n=scanner.nextInt();
+        System.out.println("Enter the cut length of a: ");
+        int a=scanner.nextInt();
+        System.out.println("Enter the cut length of b: ");
+        int b=scanner.nextInt();
+        System.out.println("Enter the cut length of c: ");
+        int c=scanner.nextInt();
         int maxi = maxCuts(n,a,b,c);
         System.out.println("The Maximum no of cuts is: "+maxi);
     }
