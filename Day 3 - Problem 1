@@ -1,0 +1,26 @@
+MAXIMUM NO OF CUTS FOR A ROPE USINF RECURSION:
+
+class Main {
+    
+    public static int maxCuts(int n, int a, int b, int c){
+        if (n==0) return 0;
+        if(n<0) return -1;
+        
+        int r1 = maxCuts(n-a,a,b,c);
+        int r2 = maxCuts(n-b,a,b,c);
+        int r3 = maxCuts(n-c,a,b,c);
+        
+        int maximum = Math.max(r1,Math.max(r2,r3));
+        
+        if(maximum==-1) return -1;
+        return maximum+1;
+    }
+    
+    
+    public static void main(String[] args) {
+        int n=17;
+        int a=5,b=3,c=2;
+        int maxi = maxCuts(n,a,b,c);
+        System.out.println("The Maximum no of cuts is: "+maxi);
+    }
+}
