@@ -1,44 +1,47 @@
 RAT IN A MAZE PROBLEM:
 
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
 class Main {
     
-    private boolean dfs(int[][] m, int x, int y, int n){
+    private int dfs(int[][] m, int x, int y, int n){
         if (x==n-1 && y==n-1){
-            return true;
+            return 1;
         }
         
         //visited cell
-        if(m[x][y]==0) return false;
+        if(m[x][y]==0) return 0;
         
         m[x][y]=0;
         //logic
-        boolean found = false;
-        
+      
+        int totalpath =0;
         if(x>0){//up
-            found = dfs(m,x-1,y,n);
+            totalpath += dfs(m,x-1,y,n);
         }
         
-        if (!found && x<n-1){//down
-            found = dfs(m,x+1,y,n);
+        if (x<n-1){//down
+            totalpath += dfs(m,x+1,y,n);
         }
         
-        if (!found && y>0){//left
-            found = dfs(m,x,y-1,n);
+        if (y>0){//left
+            totalpath += dfs(m,x,y-1,n);
         }
         
-        if(!found && y<0){//right
-            found = dfs(m,x,y+1,n);
+        if(y<n-1){//right
+            totalpath += dfs(m,x,y+1,n);
         }
         
         //backtracking
         m[x][y]=1;
-        return true;
+        return totalpath;
     }
     
-    public boolean canReachDestination(int[][] grid){
+    public int canReachDestination(int[][] grid){
         int n = grid.length;
         if(grid[0][0] ==0 || grid[n-1][n-1] ==0){
-            return false;
+            return 0;
         }
         return dfs(grid,0,0,n);
     }
